@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
+    'Origin, X-Requested-With, Content-Type, Accept, X-Api-Key'
   );
   res.setHeader('Content-Type', 'application/json');
   next();
@@ -55,7 +55,7 @@ app.use((err, req, res, next) => {
 });
 
 const clientApiKeyValidation = async (req, res, next) => {
-  const clientApiKey = req.get('api_key');
+  const clientApiKey = req.get('X-Api-Key');
   if (!clientApiKey) {
     return res.status(400).send({
       status: false,
