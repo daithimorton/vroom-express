@@ -287,6 +287,10 @@ const execCallback = function(req, res) {
   });
 };
 
+app.options('*', () => {
+  res.status(200);
+});
+
 app.post(args.baseurl, [
   sizeCheckCallback(args.maxlocations, args.maxvehicles),
   execCallback
