@@ -302,7 +302,7 @@ app.get(args.baseurl + 'health', (req, res) => {
   });
 });
 
-export const clientApiKeyValidation = async (req, res, next) => {
+const clientApiKeyValidation = async (req, res, next) => {
   const clientApiKey = req.get('api_key');
   if (!clientApiKey) {
     return res.status(400).send({
@@ -320,7 +320,7 @@ export const clientApiKeyValidation = async (req, res, next) => {
   }
 };
 
-// app.use(clientApiKeyValidation);
+app.use(clientApiKeyValidation);
 
 const server = app.listen(args.port, () => {
   console.log('vroom-express listening on port ' + args.port + '!');

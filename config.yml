@@ -15,7 +15,8 @@ cliArgs:
 routingServers:
   osrm:
     car:
-      host: '0.0.0.0'
+      # host: '0.0.0.0'
+      host: 'osrm' # using docker-compose the container is available on the network based on its container name
       port: '5000'
     bike:
       host: '0.0.0.0'
