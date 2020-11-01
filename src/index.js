@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const uuid = require('uuid');
 const config = require('./config');
+const cors = require('cors');
 
 // App and loaded modules.
 const app = express();
@@ -287,9 +288,7 @@ const execCallback = function(req, res) {
   });
 };
 
-app.options('*', () => {
-  res.status(200);
-});
+app.options('*', cors());
 
 app.post(args.baseurl, [
   sizeCheckCallback(args.maxlocations, args.maxvehicles),
