@@ -10,6 +10,8 @@ const cors = require('cors');
 // App and loaded modules.
 const app = express();
 
+app.use(cors());
+
 const HTTP_OK_CODE = 200;
 const HTTP_ERROR_CODE = 400;
 const HTTP_TOOLARGE_CODE = 413;
@@ -287,8 +289,6 @@ const execCallback = function(req, res) {
     }
   });
 };
-
-app.options('*', cors());
 
 app.post(args.baseurl, [
   sizeCheckCallback(args.maxlocations, args.maxvehicles),
