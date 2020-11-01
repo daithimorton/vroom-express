@@ -14,16 +14,15 @@ const HTTP_ERROR_CODE = 400;
 const HTTP_TOOLARGE_CODE = 413;
 const HTTP_INTERNALERROR_CODE = 500;
 
-// Enable cross-origin ressource sharing.
+// Enable cross-origin resource sharing.
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept, X-Api-Key'
   );
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
   res.header('Content-Type', 'application/json');
+  res.status(200);
   next();
 });
 
