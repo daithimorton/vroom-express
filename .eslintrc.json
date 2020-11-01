@@ -22,7 +22,7 @@
     "no-inner-declarations": 2,
     "no-lonely-if": 2,
     "no-magic-numbers": [
-      2,
+      1,
       {
         "ignore": [-1, 0, 1, 2]
       }
@@ -45,7 +45,7 @@
     "prettier/prettier": 2,
     "sort-imports": 2,
     "sort-keys": [
-      2,
+      1,
       "asc",
       {
         "caseSensitive": true,
