@@ -12,6 +12,7 @@ cliArgs:
   router: 'osrm' # routing backend (osrm, libosrm or ors)
   timeout: 300000 # milli-seconds
   baseurl: '/' #base url for api
+  apiKey: 'c38df5b5-8c97-40c6-be31-e7c4a882730b'
 routingServers:
   osrm:
     car:
@@ -49,4 +50,3 @@ routingServers:
     foot-hiking:
       host: '0.0.0.0'
       port: '8080'
-apiKey: 1234
