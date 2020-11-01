@@ -54,6 +54,26 @@ app.use((err, req, res, next) => {
   }
 });
 
+const clientApiKeyValidation = async (req, res, next) => {
+  const clientApiKey = req.get('api_key');
+  if (!clientApiKey) {
+    return res.status(400).send({
+      status: false,
+      response: 'Missing Api Key'
+    });
+  }
+  if (clientApiKey === args.apiKey) {
+    next();
+  } else {
+    return res.status(400).send({
+      status: false,
+      response: 'Invalid Api Key'
+    });
+  }
+};
+
+app.use(clientApiKeyValidation);
+
 // Simple date generator for console output.
 const now = function() {
   const date = new Date();
@@ -301,26 +321,6 @@ app.get(args.baseurl + 'health', (req, res) => {
     res.status(status).send();
   });
 });
-
-const clientApiKeyValidation = async (req, res, next) => {
-  const clientApiKey = req.get('api_key');
-  if (!clientApiKey) {
-    return res.status(400).send({
-      status: false,
-      response: 'Missing Api Key'
-    });
-  }
-  if (clientApiKey === args.apiKey) {
-    next();
-  } else {
-    return res.status(400).send({
-      status: false,
-      response: 'Invalid Api Key'
-    });
-  }
-};
-
-app.use(clientApiKeyValidation);
 
 const server = app.listen(args.port, () => {
   console.log('vroom-express listening on port ' + args.port + '!');
